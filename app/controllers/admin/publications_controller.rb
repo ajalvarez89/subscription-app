@@ -15,9 +15,9 @@ class Admin::PublicationsController < AdminController
     @publication = Publication.new(publication_params)
 
     if @publication.save
-      redirect_to admin_publication_path(@publication)
+      redirect_to admin_publication_path(@publication), notice: "Successfully created publication."
     else
-      render  :new, alert: "Something went wrong."
+      render  :new, flash[:error] =  "Something went wrong."
     end
   end
 
@@ -25,9 +25,9 @@ class Admin::PublicationsController < AdminController
 
   def update
     if @publication.update(publication_params)
-      redirect_to admin_publication_path(@publication), alert: "Successfully edited publication."
+      redirect_to admin_publication_path(@publication), notice: "Successfully edited publication."
     else
-      redirect_to edit, alert: "Something went wrong."
+      redirect_to edit, flash[:error] =  "Something went wrong."
     end
   end
 
