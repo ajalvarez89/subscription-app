@@ -16,6 +16,8 @@
     <div class="card-footer">
       <%= link_to "View more details", admin_publication_path(publication), class: "btn btn-secondary" %>
       <%= link_to "Edit", edit_admin_publication_path(publication), class: "btn btn-secondary" %>
+      <td><%= link_to 'Destroy', { action: :destroy, id: publication.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <!-- <%= link_to "Delete", edit_admin_publication_path(publication), class: "btn btn-secondary" %> -->
     </div>
   </div>
 <% end %>

@@ -11,7 +11,7 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.1'
-
+gem 'stripe', '~> 5.17'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

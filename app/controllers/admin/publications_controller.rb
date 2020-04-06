@@ -25,21 +25,26 @@ class Admin::PublicationsController < AdminController
 
   def update
     if @publication.update(publication_params)
-      redirect_to admin_publication_path(@publication)
+      redirect_to admin_publication_path(@publication), alert: "Successfully edited publication."
     else
       redirect_to edit, alert: "Something went wrong."
     end
   end
 
   def destroy
-    @publication.destroy
-    redirect_to admin_publication_path, alert: "Successfully deleted publication."
+    if @publication.delete
+      flash[:notice] = 'Publication deleted!'
+      redirect_to admin_publications_path
+    else
+      flash[:error] = 'Failed to delete this publication!'
+      render :destroy
+    end
   end
 
   private
 
   def find_publication
-    @publication = Publication.find(params[:id])
+    @publication = Publication.find_by_id(params[:id])
   end
 
   def publication_params
